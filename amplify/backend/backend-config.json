@@ -1,6 +1,6 @@
 {
   "api": {
-    "amplifyreact": {
+    "servicerequest": {
       "dependsOn": [],
       "output": {
         "authConfig": {
@@ -18,7 +18,7 @@
     }
   },
   "auth": {
-    "amplifyreact05039a75": {
+    "servicerequest": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -27,14 +27,19 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
-        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
@@ -44,10 +49,11 @@
     }
   },
   "storage": {
-    "josephstorage": {
+    "servicerequest12d6b9db": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "service": "S3"
+      "service": "S3",
+      "serviceType": "imported"
     }
   }
 }
