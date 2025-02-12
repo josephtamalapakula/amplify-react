@@ -1,6 +1,6 @@
 {
   "api": {
-    "servicerequest": {
+    "amplifyreact": {
       "dependsOn": [],
       "output": {
         "authConfig": {
@@ -18,7 +18,7 @@
     }
   },
   "auth": {
-    "servicerequest": {
+    "amplifyreactb6b65aec": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -27,19 +27,14 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ],
+          "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [],
-        "socialProviders": [],
-        "usernameAttributes": [
+        "signupAttributes": [
           "EMAIL"
         ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
@@ -48,30 +43,11 @@
       "service": "Cognito"
     }
   },
-  "parameters": {
-    "AMPLIFY_storage_servicerequest12d6b9db_bucketName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "servicerequest12d6b9db"
-        }
-      ]
-    },
-    "AMPLIFY_storage_servicerequest12d6b9db_region": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "servicerequest12d6b9db"
-        }
-      ]
-    }
-  },
   "storage": {
-    "servicerequest12d6b9db": {
+    "s37b3312c2": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "service": "S3",
-      "serviceType": "imported"
+      "service": "S3"
     }
   }
 }
