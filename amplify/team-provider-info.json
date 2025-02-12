@@ -16,7 +16,10 @@
         "servicerequest": {}
       },
       "storage": {
-        "servicerequest12d6b9db": {}
+        "servicerequest12d6b9db": {
+          "bucketName": "josephbucketdfe5d-joseph",
+          "region": "us-east-1"
+        }
       },
       "api": {
         "servicerequest": {}

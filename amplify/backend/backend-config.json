@@ -48,6 +48,24 @@
       "service": "Cognito"
     }
   },
+  "parameters": {
+    "AMPLIFY_storage_servicerequest12d6b9db_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "servicerequest12d6b9db"
+        }
+      ]
+    },
+    "AMPLIFY_storage_servicerequest12d6b9db_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "servicerequest12d6b9db"
+        }
+      ]
+    }
+  },
   "storage": {
     "servicerequest12d6b9db": {
       "dependsOn": [],
