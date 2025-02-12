@@ -1,39 +1,95 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import './App.css';
+import Heading from './Heading';
+import ServiceRequest from './ServiceRequest';
 
-const client = generateClient<Schema>();
+import { generateClient } from 'aws-amplify/api';
+import { Authenticator, /*withAuthenticator*/ } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import UploadProfile from './UploadProfile';
+import { useEffect, useState } from 'react';
+import Components from './Components';
+import AllComplaints from './AllComplaints';
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
+  const [logo,setLogo] = useState<string | null>();
+  const [showComplaintForm, SetShowComplaintForm] = useState<boolean>(true);
+  const [allComplaints, setAllComplaints] = useState<any>();
+  const [message, setMessage] = useState<string | null>();
   useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+    const profilePic = localStorage.getItem("profilePic");
+    if(profilePic!==null){
+      setLogo(profilePic);
+    }
+  },[]);
+  const clearCache = () => {
+    localStorage.clear();
+    setLogo(null);
   }
-
+  const fetchAPI = async () => {
+    let list = `
+      query MyQuery {
+            listServiceRequests {
+                  items {
+                          contactInformation
+                          createdAt
+                          currentLocation
+                          id
+                          reporterName
+                          resolutionDate
+                          serviceRequestDescription
+                          serviceRequestName
+                          severity
+                          updatedAt
+                        }
+                  }
+          }
+    `;
+    const client = generateClient();
+      const response: any = await client.graphql({
+        query: list
+      });
+      if(response?.data?.listServiceRequests?.items.length>0){
+        setAllComplaints(response?.data?.listServiceRequests?.items);
+        SetShowComplaintForm(false);
+        setMessage(null);
+      }
+      else{
+        setMessage("No Complaints Found!");
+      }
+      
+  }
+  
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
+    <div className="App">
+      <Heading logo={logo}/>
+      <ServiceRequest />      
+      <div className='SignInLayout'>
+      <Authenticator>
+        {({ signOut }) => (
+          <div>
+              <div className='SignoutLayout'>
+                <div onClick={clearCache}>
+                <button  onClick={signOut} className='SignoutStyle'>Sign Out</button>
+                </div>
+              </div>
+              <div className='ShowAllLayout'>
+                {showComplaintForm?
+                <button onClick={fetchAPI}>Show All Existing Requests</button>:
+                <button onClick={()=>SetShowComplaintForm(true)}>Show Complaint Form</button>}
+              </div>
+              {message&&<div>{message}</div>}
+              
+              <UploadProfile logo={logo} setLogo={setLogo}/>
+              {showComplaintForm
+              ?<Components />
+              :<AllComplaints list={allComplaints}/>
+              }
+            </div>
+        )}
+      </Authenticator>
       </div>
-    </main>
+      
+    </div>
   );
 }
 

@@ -1,0 +1,23 @@
+.UploadLayout {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.errorStyle {
+    color: red;
+}
+
+.uploadtos3Style {
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+}
+
+.uploadButtonStyle {
+    background-color: #EECFFD;
+}
+
+.uploadButtonStyle2 {
+    background-color: #592468;
+}

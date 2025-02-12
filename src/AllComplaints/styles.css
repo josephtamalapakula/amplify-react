@@ -1,0 +1,33 @@
+.infoLayout {
+    display: flex;
+    border: 2px solid;
+    flex-direction: column;
+}
+.resultLayout{
+    background-color: white;
+      padding: 0px 60px;
+      border-radius: 10px;
+      margin-top: 20px;
+      background: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+      ),
+      url("https://josephservicerequestbucket4d1be-dev.s3.ap-southeast-2.amazonaws.com/red-and-blue-gradient-light-effect-simple-theme-background_6241508.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 600px;
+  }
+  .resultBorder{
+    display: flex;
+    justify-content: center;
+  }
+  .result{
+    display: grid;
+    @media screen and (max-width: 800px) {
+      grid-template-columns: auto;
+    }
+    @media screen and (max-width: 1400px) {
+      grid-template-columns: auto auto;
+    }
+    grid-template-columns: auto auto auto;
+  }
