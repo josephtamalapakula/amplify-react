@@ -55,7 +55,7 @@ const UploadProfile = (props: any) => {
       </div>
 
         {!props.logo&&<button className='logoButtonStyle' onClick={getFiles}>
-             Show Logo
+             Show Profile Photo
         </button>}
         {logoError&& <h6 className='errorStyle'>{logoError}</h6>}
 
