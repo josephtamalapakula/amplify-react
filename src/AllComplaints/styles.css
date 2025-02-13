@@ -23,11 +23,8 @@
   }
   .result{
     display: grid;
-    @media screen and (max-width: 800px) {
+    grid-template-columns: auto auto;    
+    @media screen and (max-width: 1500px) {
       grid-template-columns: auto;
     }
-    @media screen and (max-width: 1400px) {
-      grid-template-columns: auto auto;
-    }
-    grid-template-columns: auto auto auto;
   }
