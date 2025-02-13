@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
+  max-width: 2000px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  width: 90%;
 }
 
 .logo {
@@ -40,3 +41,38 @@
 .read-the-docs {
   color: #888;
 }
+
+.SignoutStyle {
+  font-size: 0.8rem;
+   padding: 5px 10px;
+   border-radius: 10px;
+   width: 150px;
+   background-color: purple;
+ }
+ 
+ .SignoutLayout {
+   display: flex;
+   justify-content: flex-end;
+   margin-top: -80px;
+   @media screen and (max-width: 800px) {
+    margin-top: 0px;
+}
+ }
+ 
+ .SignInLayout {
+   margin: 10px;
+ }
+ 
+ .ShowAllLayout{
+   display: flex;
+   @media screen and (max-width: 800px) {
+    flex-direction: column;
+   }
+
+   .buttonStyle{
+    color: #fff;
+    background-color: purple;
+    width: 350px;
+    margin-right: 10px;
+   }
+ }

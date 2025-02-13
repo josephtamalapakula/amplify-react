@@ -14,12 +14,12 @@ const Heading = (props: any) => {
         <div className='headerLayout'>
           <div>
             <Nav>
-              <Nav.Link href="/"><h3>Home</h3></Nav.Link>
+              <Nav.Link href="/"><h3 className='homeLayout'>Home</h3></Nav.Link>
             </Nav>
           </div>
           <div>
           {props.logo&&<img className='imageStyle'
-            src={"https://josephbucketdfe5d-joseph.s3.us-east-1.amazonaws.com/"+props.logo} alt={"header"}/>}
+            src={"https://amplifyreact53900b4e426a423d9225994bd7503f498a858-main.s3.us-east-1.amazonaws.com/"+props.logo} alt={"profile"}/>}
           </div>
         </div>
       </Navbar.Collapse>

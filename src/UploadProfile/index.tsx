@@ -9,6 +9,7 @@ const UploadProfile = (props: any) => {
     const [logoError, setLogoError] = useState<string | null>();
 
     const handleChange = (event: any) => {
+        console.log(event);
         setFile(event.target.files[0]);
         setLogoError(null);
         setShowButton(false);
@@ -17,18 +18,18 @@ const UploadProfile = (props: any) => {
     const getFiles = async () => {
     try {
       const checkFile = await list({
-         path: ({identityId}) => `protected/${identityId}/photos/header.jpg`
+         path: ({identityId}) => `protected/${identityId}/photos/profile.jpg`
       });
       if(checkFile.items.length>0){
       
         const result: any = await getProperties({
-          path: ({ identityId }) => `protected/${identityId}/photos/header.jpg`
+          path: ({ identityId }) => `protected/${identityId}/photos/profile.jpg`
         });
         props?.setLogo(result?.path);
         localStorage.setItem("profilePic",result?.path);
       }
       else{
-        setLogoError("Sorry! the file header.jpg is not found");
+        setLogoError("Please Upload your Profile Photo");
       }
       } catch (error) {
         //console.log(error);
@@ -37,7 +38,7 @@ const UploadProfile = (props: any) => {
 
     const UploadToS3 = () => {
       uploadData({
-        path: ({identityId}) => `protected/${identityId}/photos/${file.name}`,
+        path: ({identityId}) => `protected/${identityId}/photos/profile.jpg`,
         data: file,
     });
     setShowButton(true);
@@ -46,7 +47,6 @@ const UploadProfile = (props: any) => {
     return (
     <div className='UploadLayout'>
       <h5>Upload Profile Photo</h5>
-      <div>Note: currently default logo is set to header.jpg </div>
       <div>
         <input type='file' name='file' accept='.jpg' onChange={handleChange}/>
       </div>
@@ -54,7 +54,7 @@ const UploadProfile = (props: any) => {
         {file &&<button className={showButton?'uploadButtonStyle':'uploadButtonStyle2'} onClick={UploadToS3} disabled={showButton}>Upload {file.name} to s3 </button>}
       </div>
 
-        {!props.logo&&<button className='uploadButtonStyle2' onClick={getFiles}>
+        {!props.logo&&<button className='logoButtonStyle' onClick={getFiles}>
              Show Logo
         </button>}
         {logoError&& <h6 className='errorStyle'>{logoError}</h6>}

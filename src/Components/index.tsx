@@ -183,7 +183,7 @@ SetResponse(response);
     <div>
     <div className="app">
       <form onSubmit={handleSubmit}>
-        <h1>Complaint Form</h1>
+        <h1>Service Request Form</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -197,7 +197,7 @@ SetResponse(response);
             textAreaError={textAreaError}
           />
         ))}
-        <button>Submit</button>
+        <button className="buttonStyle">Submit</button>
       </form>
       </div>
       

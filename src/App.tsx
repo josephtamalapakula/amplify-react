@@ -12,7 +12,8 @@ import AllComplaints from './AllComplaints';
 
 function App() {
   const [logo,setLogo] = useState<string | null>();
-  const [showComplaintForm, SetShowComplaintForm] = useState<boolean>(true);
+  const [showComplaintForm, setShowComplaintForm] = useState<boolean>(true);
+  const [showProfilePhotoForm, setShowProfilePhotoForm] = useState<boolean>(true);
   const [allComplaints, setAllComplaints] = useState<any>();
   const [message, setMessage] = useState<string | null>();
   useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
       });
       if(response?.data?.listServiceRequests?.items.length>0){
         setAllComplaints(response?.data?.listServiceRequests?.items);
-        SetShowComplaintForm(false);
+        setShowComplaintForm(false);
         setMessage(null);
       }
       else{
@@ -74,12 +75,16 @@ function App() {
               </div>
               <div className='ShowAllLayout'>
                 {showComplaintForm?
-                <button onClick={fetchAPI}>Show All Existing Requests</button>:
-                <button onClick={()=>SetShowComplaintForm(true)}>Show Complaint Form</button>}
+                <button className='buttonStyle' onClick={fetchAPI}>Show All Existing Requests</button>:
+                <button className='buttonStyle' onClick={()=>setShowComplaintForm(true)}>View Complaint Form</button>}
+                {showProfilePhotoForm?
+                <button className='buttonStyle' onClick={()=>setShowProfilePhotoForm(false)}>Show Upload Profile</button>:
+                <button className='buttonStyle' onClick={()=>setShowProfilePhotoForm(true)}>Hide Upload Profile</button>}
               </div>
               {message&&<div>{message}</div>}
               
-              <UploadProfile logo={logo} setLogo={setLogo}/>
+              {!showProfilePhotoForm&&<UploadProfile logo={logo} setLogo={setLogo}/>}
+
               {showComplaintForm
               ?<Components />
               :<AllComplaints list={allComplaints}/>

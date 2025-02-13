@@ -37,12 +37,12 @@ input:invalid[focused="true"] ~ span{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     background: linear-gradient(
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
       ),
-      url("https://josephservicerequestbucket4d1be-dev.s3.ap-southeast-2.amazonaws.com/hand-painted-watercolor-pastel-sky-background_23-2148902771.avif");
+      url("https://amplifyreact53900b4e426a423d9225994bd7503f498a858-main.s3.us-east-1.amazonaws.com/hand-painted-watercolor-pastel-sky-background_23-2148902771.avif");
     background-size: cover;
     background-position: center;
   }
@@ -86,7 +86,7 @@ input:invalid[focused="true"] ~ span{
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
       ),
-      url("https://josephservicerequestbucket4d1be-dev.s3.ap-southeast-2.amazonaws.com/hand-painted-watercolor-pastel-sky-background_23-2148902771.avif");
+      url("https://amplifyreact53900b4e426a423d9225994bd7503f498a858-main.s3.us-east-1.amazonaws.com/hand-painted-watercolor-pastel-sky-background_23-2148902771.avif");
     background-size: cover;
     background-position: center;
     width: 600px;
@@ -108,3 +108,8 @@ input:invalid[focused="true"] ~ span{
     color: red;
     display: none;
   }
+
+  .buttonStyle{
+    color: #fff;
+    background-color: purple;
+   }
